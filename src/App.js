@@ -21,11 +21,17 @@ function App() {
 		
 	};
 
+	const removeItem = itemID => {
+		const newCartArr = cart.filter(thing => thing.id !== itemID );
+		console.log('newCartArr', newCartArr)
+		setCart([...newCartArr])
+	};
+
 	useEffect(()=> {console.log(cart)}, [cart])
 
 	return (
 		<ProductContext.Provider value={{products, addItem}}>
-			<CartContext.Provider value={{cart}}>
+			<CartContext.Provider value={{cart, removeItem}}>
 				<div className="App">
 					<Navigation />
 
