@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import data from './data';
 
@@ -12,8 +12,12 @@ function App() {
 	const [cart, setCart] = useState([]);
 
 	const addItem = item => {
-		// add the given item to the cart
+		const newCartItem = products.filter(thing => thing.id === item.id );
+		setCart([...cart, ...newCartItem])
+		
 	};
+
+	useEffect(()=> {console.log(cart)}, [cart])
 
 	return (
 		<div className="App">
